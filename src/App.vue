@@ -2,10 +2,10 @@
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <el-button type="primary">button</el-button>
     <h1>helloworld</h1>
-  </header>
+  </header> -->
   <RouterView />
 
 </template>
