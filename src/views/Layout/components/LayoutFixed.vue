@@ -7,22 +7,22 @@ const categoryStore = useCategoryStore();
 </script>
 
 <template> 
-    <div class="app-header-sticky" :class="{show:y>78}">
+    <div class="app-header-sticky" :class="{show: y>78 }">
         <div class="container">
             <RouterLink class="logo" to="/" />
             <ul class="app-header-nav">
                 <li class="home">
-                    <RouterLink to="/">首页{{y}}</RouterLink>
+                    <RouterLink to="/">首页{{ y  }}</RouterLink>
                 </li>
                 <li v-for="item in categoryStore.categoryList"  :key="item.id">
                     <RouterLink to="/">{{ item.name }}</RouterLink>
                 </li>
             </ul>
 
-        <div class="right">
-            <RouterLink to="/">品牌</RouterLink>
-            <RouterLink to="/">专题</RouterLink>
-        </div>
+            <div class="right">
+                <RouterLink to="/">品牌</RouterLink>
+                <RouterLink to="/">专题</RouterLink>
+            </div>
         </div>
     </div>
 </template>

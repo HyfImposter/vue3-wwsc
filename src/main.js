@@ -2,17 +2,30 @@ import '@/styles/common.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { lazyPlugin } from './directives'
 
 import App from './App.vue'
 import router from './router'
-import { getCategoryApi } from './apis/testApi'
+import { useIntersectionObserver } from '@vueuse/core'
 
 const app = createApp(App)
 
+// app.directive('img-lazy', {
+//     mounted(el, binding) {
+//         const { stop } = useIntersectionObserver(
+//             el,
+//             ([{ isIntersecting }]) => {
+//                 console.log(isIntersecting) // 判断图片是否在视口区域， 懒加载的精髓就在于在视口区才加载
+//                 if (isIntersecting) {
+//                     el.src = binding.value;
+//                     stop();
+//                 }
+//             }
+//         )
+//     }
+// })
 app.use(createPinia())
 app.use(router)
-getCategoryApi().then(res => {
-    console.log(res);
-})
+app.use(lazyPlugin)
 app.mount('#app')
 

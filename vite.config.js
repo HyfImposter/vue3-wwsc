@@ -12,12 +12,13 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
-        AutoImport({
-          resolvers: [ElementPlusResolver()],
-        }),
-        Components({
-          resolvers: [ElementPlusResolver({importStyle: "sass"})],
-        }),
+    AutoImport({
+      imports:["vue", "vue-router", "pinia"],
+      resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+      resolvers: [ElementPlusResolver({importStyle: "sass"})],
+    }),
   ],
   resolve: {
     alias: {

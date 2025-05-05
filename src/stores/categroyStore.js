@@ -13,5 +13,5 @@ export const useCategoryStore = defineStore('category', () => {
       getCategory();
   })
 
-  return { categoryList, getCategory, increment }
+  return { categoryList, getCategory}
 })
