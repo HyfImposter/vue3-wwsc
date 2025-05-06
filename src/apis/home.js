@@ -4,9 +4,9 @@ import http from "@/utils/http";
  * @param {*}
  * @return {*}
  */
-export function getBannerAPI() {
-    return http.get('/home/banner');
-}
+// export function getBannerAPI() {
+//     return http.get('/home/banner');
+// }
 export const getNewAPI = () => {
     return http.get('/home/new')
 }
@@ -15,4 +15,7 @@ export const getHotAPI = () => {
 }
 export const getGoodsAPI = () => {
     return http.get('/home/goods')
+}
+export function getBannerAPI(distributionSite='1') {
+    return http.get('home/banner', {params: {distributionSite}});
 }

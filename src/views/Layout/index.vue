@@ -8,7 +8,7 @@ import LayoutNav from './components/LayoutNav.vue';
     <LayoutFixed></LayoutFixed>
     <LayoutNav></LayoutNav>
     <LayoutHeader></LayoutHeader>
-    <RouterView /> 
+    <RouterView :key="$route.fullPath" /> 
     <LayoutFooter></LayoutFooter>
 </template>
 <style lang="scss">
