@@ -7,9 +7,10 @@ import { lazyPlugin } from './directives'
 import App from './App.vue'
 import router from './router'
 import { useIntersectionObserver } from '@vueuse/core'
+import { componentPlugin } from './components'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 const app = createApp(App)
-
 // app.directive('img-lazy', {
 //     mounted(el, binding) {
 //         const { stop } = useIntersectionObserver(
@@ -24,8 +25,12 @@ const app = createApp(App)
 //         )
 //     }
 // })
-app.use(createPinia())
+const pinia = createPinia()
+// app.use(createPinia())
+pinia.use(piniaPluginPersistedstate)
 app.use(router)
+app.use(pinia)
 app.use(lazyPlugin)
+app.use(componentPlugin)
 app.mount('#app')
 

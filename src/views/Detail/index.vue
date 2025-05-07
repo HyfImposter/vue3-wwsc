@@ -2,6 +2,14 @@
 import { getDetail } from '@/apis/detail';
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import DetailHot from '../Home/components/DetailHot .vue';
+import ImageView from '@/components/ImageView/index.vue';
+import Sku from '@/components/sku/index.vue';
+
+const skuChange = (sku)=>{
+  console.log(sku)
+}
+
 const goods = ref({})
 const route = useRoute()
 const getGoods = async () => {
@@ -32,9 +40,11 @@ onMounted(()=>getGoods())
               <!-- 商品信息 -->
                 <div>
                     <div class="goods-info">
-                        <div calss="media">
-                        </div>
-                        <ul class="goods-sales">
+                        <div class="media">
+                          <!-- 图片预览 -->
+                          <ImageView :image-list="goods.mainPictures" />
+                          <!-- 统计数量 -->
+                          <ul class="goods-sales">
                             <li>
                                 <p>销售人气</p>
                                 <p>{{ goods.salesCount }}+ </p>
@@ -55,9 +65,9 @@ onMounted(()=>getGoods())
                                 <p>{{ goods.brand.name }}</p>
                                 <p><i class="iconfont icon-dynamic-filling"></i>品牌主页</p>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="spec">
+                          </ul>
+                        </div>
+                      <div class="spec">
                         <!-- 商品信息 -->
                         <p class="g-name"> {{ goods.name }} </p>
                         <p class="g-desc">{{ goods.desc }} </p>
@@ -80,15 +90,18 @@ onMounted(()=>getGoods())
                             </dd>
                             </dl>
                         </div>
+                        <Sku :goods="goods" @change="skuChange" />
+                        <div>
+                          <el-button size="large" class="btn">
+                            加入购物车
+                          </el-button>
+                        </div>
+                      </div>
                     </div>
-                    <!-- sku组件 -->
+                    <!-- sku组件 -->  
                     <!-- 数据组件 -->
                     <!-- 按钮组件 -->
-                    <div>
-                        <el-button size="large" class="btn">
-                            加入购物车
-                        </el-button>
-                    </div>
+                    
                 </div>
             </div>
             <div class="goods-footer">
@@ -112,7 +125,8 @@ onMounted(()=>getGoods())
                 </div>
                 <!-- 热榜+专题推荐 -->
                 <div class="goods-aside">
-
+                  <DetailHot :hot-type="1"/>
+                  <DetailHot :hot-type="2"/>
                 </div>
             </div>
         </div>
